@@ -145,7 +145,7 @@ void cMain::OnUndoButtonClicked(wxCommandEvent& evt)
 void cMain::OnSearchBarTyped(wxCommandEvent& evt)
 {
 	m_bodyText->Clear();
-	if (m_searchBar->GetValue() != "")
+	if (m_searchBar->GetValue() != "" && !m_entryList->IsEmpty())
 	{
 		m_entryList->SetSelection(m_entryList->FindString(m_searchBar->GetValue()));
 		m_bodyText->AppendText(listEntry.at(m_entryList->GetSelection()).body);
