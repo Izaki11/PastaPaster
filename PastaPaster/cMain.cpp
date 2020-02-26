@@ -147,8 +147,11 @@ void cMain::OnSearchBarTyped(wxCommandEvent& evt)
 	m_bodyText->Clear();
 	if (m_searchBar->GetValue() != "" && !m_entryList->IsEmpty())
 	{
-		m_entryList->SetSelection(m_entryList->FindString(m_searchBar->GetValue()));
-		m_bodyText->AppendText(listEntry.at(m_entryList->GetSelection()).body);
+		if (m_entryList->FindString(m_searchBar->GetValue()) != wxNOT_FOUND)
+		{
+			m_entryList->SetSelection(m_entryList->FindString(m_searchBar->GetValue()));
+			m_bodyText->AppendText(listEntry.at(m_entryList->GetSelection()).body);
+		}
 	}
 	evt.Skip();
 }
